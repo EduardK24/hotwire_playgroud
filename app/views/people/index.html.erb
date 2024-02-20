@@ -1,0 +1,26 @@
+<div style="text-align: center;">
+  <h1>People</h1>
+</div>
+
+
+<table style="width: 60%; margin-left: auto; margin-right: auto;">
+  <thead>
+  <tr>
+    <th>Name</th>
+    <th>Actions</th>
+  </tr>
+  </thead>
+  <tbody>
+  <% @persons.each do |person| %>
+    <tr>
+      <td><%= person.name %></td>
+      <td>
+        <%= link_to 'Show Details', person_details_path(person) %> |
+        <%= link_to 'Edit', edit_person_path(person) %> |
+        <%= button_to 'Delete', person_path(person), method: :delete, data: { confirm: 'Are you sure?' }, form: { style: "display: inline" } %>
+      </td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+<%= link_to 'New Person', new_person_path %>

@@ -1,0 +1,28 @@
+<!-- app/views/details/show.html.erb -->
+
+<p id="notice"><%= notice %></p>
+
+<h1>Detail</h1>
+
+<p>
+  <strong>Title:</strong>
+  <%= @detail.title %>
+</p>
+
+<p>
+  <strong>Age:</strong>
+  <%= @detail.age %>
+</p>
+
+<p>
+  <strong>Phone:</strong>
+  <%= @detail.phone %>
+</p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @detail.email %>
+</p>
+
+<%= link_to 'Edit', edit_person_detail_path(@detail.person, @detail) %> |
+<%= link_to 'Back to Details', person_details_path(@detail.person) %>
