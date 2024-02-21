@@ -1,0 +1,29 @@
+<h2>Details for <%= person.name %></h2>
+
+<%= link_to 'Add New Detail', new_person_detail_path(person), data: { turbo_frame: "details_form" } %>
+
+<%= turbo_frame_tag "details" do %>
+  <ul>
+    <% person.details.each do |detail| %>
+      <li>
+        <strong>Title:</strong> <%= detail.title %>
+      </li>
+      <li>
+        <strong>Age:</strong> <%= detail.age %>
+      </li>
+      <li>
+        <strong>Phone:</strong> <%= detail.phone %>
+      </li>
+      <li>
+        <strong>Email:</strong> <%= detail.email %>
+      </li>
+
+        <%= link_to 'Edit', edit_person_detail_path(person, detail), data: { turbo_frame: "details_form" } %> |
+        <%= link_to 'Remove', person_detail_path(person, detail),
+                    method: :delete,
+                    data: { confirm: "Are you sure?", turbo_frame: "details" } %>
+    <% end %>
+  </ul>
+<% end %>
+
+<%= turbo_frame_tag "details_form" %>

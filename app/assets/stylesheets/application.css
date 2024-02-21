@@ -17,14 +17,11 @@
 /* app/assets/stylesheets/application.css */
 table {
     border-collapse: collapse;
-    width: 60%;
-    margin-left: auto;
-    margin-right: auto;
+    width: 30%;
 }
 
 th, td {
     border: 1px solid #ddd;
-    text-align: center;
     padding: 8px;
 }
 

@@ -1,37 +1,8 @@
-<!-- app/views/people/index.html.erb -->
-<p id="notice"><%= notice %></p>
-
-<h1>Details for <%= @person.name %></h1>
-
-<table>
-  <thead>
-  <tr>
-    <th>Title</th>
-    <th>Age</th>
-    <th>Phone</th>
-    <th>Email</th>
-    <th>Actions</th>
-  </tr>
-  </thead>
-
-  <tbody>
-  <% @details.each do |detail| %>
-    <tr>
-      <td><%= detail.title %></td>
-      <td><%= detail.age %></td>
-      <td><%= detail.phone %></td>
-      <td><%= detail.email %></td>
-      <td>
-        <%= button_to 'Edit', edit_person_detail_path(person_id: detail.person_id, id: detail.id), method: :get %>
-        <%= button_to 'Delete', person_detail_path(person_id: detail.person_id, id: detail.id), method: :delete, data: { confirm: 'Are you sure?' }%>
-      </td>
-    </tr>
-  <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New details', new_person_detail_path %>
-<%= link_to 'Back to People', people_path %>
-
+<%= turbo_frame_tag "detail" do %>
+  <h2>Details for <%= @person.name %></h2>
+  <ul>
+    <% @person.details.each do |detail| %>
+      <li>Title: <%= detail.title %>, Age: <%= detail.age %></li>
+    <% end %>
+  </ul>
+<% end %>

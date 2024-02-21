@@ -1,26 +1,33 @@
-<div style="text-align: center;">
-  <h1>People</h1>
+<!-- app/views/persons/_details.html.erb -->
+
+<h1>People</h1>
+<div style="display: flex; justify-content: space-between;">
+  <div style="width: 45%;">
+    <table >
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Actions</th>
+      </tr>
+      </thead>
+      <tbody>
+      <% @persons.each do |person| %>
+        <tr>
+          <td>
+            <%= link_to person.name, person_path(person), data: { turbo_frame: "details_form" } %>
+          </td>
+          <td>
+            <%= link_to 'Edit', edit_person_path(person), class: 'edit-link' %>
+            <%= link_to 'Delete', person_path(person), method: :delete, data: { confirm: 'Are you sure?' }, class: 'delete-link' %>
+          </td>
+        </tr>
+      <% end %>
+      </tbody>
+    </table>
+  </div>
+
+  <div style="width: 45%;">
+    <%= turbo_frame_tag "details_form" %>
+  </div>
 </div>
-
-
-<table style="width: 60%; margin-left: auto; margin-right: auto;">
-  <thead>
-  <tr>
-    <th>Name</th>
-    <th>Actions</th>
-  </tr>
-  </thead>
-  <tbody>
-  <% @persons.each do |person| %>
-    <tr>
-      <td><%= person.name %></td>
-      <td>
-        <%= link_to 'Show Details', person_details_path(person) %> |
-        <%= link_to 'Edit', edit_person_path(person) %> |
-        <%= button_to 'Delete', person_path(person), method: :delete, data: { confirm: 'Are you sure?' }, form: { style: "display: inline" } %>
-      </td>
-    </tr>
-  <% end %>
-  </tbody>
-</table>
 <%= link_to 'New Person', new_person_path %>

@@ -1,3 +1,5 @@
 <h1>Edit detail</h1>
-<%= render 'form', person: @person %>
-<%= link_to 'Back', people_path %>
+<%= turbo_frame_tag "details_form" do %>
+  <%= render 'form', person: @person %>
+
+<% end %>
